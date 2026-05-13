@@ -1,0 +1,35 @@
+# Keil/uVision build outputs
+Objects/
+Listings/
+DebugConfig/
+
+# Keil user/local session files
+*.uvguix.*
+*.uvguix
+*.uvgui.*
+*.uvgui
+*.uvopt
+*.uvoptx.bak
+*.uvprojx.bak
+
+# Generated binaries and maps
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.lnp
+*.htm
+*.crf
+*.d
+*.o
+*.obj
+
+# Editor/system files
+.vscode/
+Thumbs.db
+Desktop.ini
+
+# Local reference media generated during analysis
+video_ref/
