@@ -7,16 +7,16 @@
 
 #define CONTROL_MOTOR_MIN_PWM              1000.0f
 #define CONTROL_MOTOR_IDLE_PWM             1050.0f
-#define CONTROL_MOTOR_CRUISE_PWM           1100.0f
-#define CONTROL_MOTOR_MAX_PWM              1100.0f
+#define CONTROL_MOTOR_CRUISE_PWM           1200.0f
+#define CONTROL_MOTOR_MAX_PWM              1200.0f
 #define CONTROL_MAX_YAW_DIFF_PWM           120.0f
 #define CONTROL_STABILIZE_MIN_THROTTLE_PWM CONTROL_MOTOR_IDLE_PWM
 
 #define CONTROL_REMOTE_THROTTLE_MIN_PWM    1000.0f
 #define CONTROL_REMOTE_THROTTLE_MAX_PWM    2000.0f
 
-#define CONTROL_SERVO1_CENTER_US           1300.0f
-#define CONTROL_SERVO2_CENTER_US           1500.0f
+#define CONTROL_SERVO1_CENTER_US           1611.0f
+#define CONTROL_SERVO2_CENTER_US           1278.0f
 #define CONTROL_SERVO_CENTER_US            CONTROL_SERVO1_CENTER_US
 #define CONTROL_SERVO_MIN_US               1150.0f
 #define CONTROL_SERVO_MAX_US               2150.0f
@@ -78,8 +78,8 @@
 #define CONTROL_SERVO2_PITCH_SIGN          (-1.0f)
 #define CONTROL_SERVO2_ROLL_SIGN           (1.0f)
 
-#define CONTROL_MOTOR1_YAW_SIGN            (1.0f)
-#define CONTROL_MOTOR2_YAW_SIGN            (-1.0f)
+#define CONTROL_MOTOR1_YAW_SIGN            (1.0f)   /* OUT1: upper motor, clockwise */
+#define CONTROL_MOTOR2_YAW_SIGN            (-1.0f)  /* OUT2: lower motor, counter-clockwise */
 
 typedef struct
 {

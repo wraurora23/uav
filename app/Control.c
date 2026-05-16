@@ -11,9 +11,6 @@ static PID_t yaw_rate_pid;
 static Control_Command_t control_cmd;
 static Control_Output_t control_out;
 static uint8_t control_armed = 0u;
-static uint8_t attitude_reference_valid = 0u;
-static float pitch_reference_deg = 0.0f;
-static float roll_reference_deg = 0.0f;
 
 static void Control_ApplyOutput(void);
 
@@ -228,9 +225,6 @@ void Control_Reset(void)
     control_out.pitch_servo_out = 0.0f;
     control_out.roll_servo_out = 0.0f;
     control_out.yaw_out = 0.0f;
-    attitude_reference_valid = 0u;
-    pitch_reference_deg = 0.0f;
-    roll_reference_deg = 0.0f;
 }
 
 void Control_SetArmed(uint8_t armed)
@@ -294,20 +288,8 @@ void Control_Update(float pitch_deg, float roll_deg,
         return;
     }
 
-    if (attitude_reference_valid == 0u)
-    {
-        attitude_reference_valid = 1u;
-        pitch_reference_deg = pitch_deg;
-        roll_reference_deg = roll_deg;
-        PID_Reset(&pitch_angle_pid);
-        PID_Reset(&roll_angle_pid);
-        PID_Reset(&pitch_rate_pid);
-        PID_Reset(&roll_rate_pid);
-        PID_Reset(&yaw_rate_pid);
-    }
-
-    pitch_target_deg = pitch_reference_deg + control_cmd.pitch_deg;
-    roll_target_deg = roll_reference_deg + control_cmd.roll_deg;
+    pitch_target_deg = control_cmd.pitch_deg;
+    roll_target_deg = control_cmd.roll_deg;
 
     control_out.pitch_rate_target = PID_Calc(&pitch_angle_pid, pitch_target_deg, pitch_deg, CONTROL_LOOP_DT_S);
     control_out.roll_rate_target = PID_Calc(&roll_angle_pid, roll_target_deg, roll_deg, CONTROL_LOOP_DT_S);
